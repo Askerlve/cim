@@ -79,7 +79,6 @@ public class CIMClient {
         //向服务端注册
         loginCIMServer();
 
-
     }
 
     /**

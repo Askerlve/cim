@@ -140,14 +140,16 @@ public class RouteController {
     @RequestMapping(value = "login", method = RequestMethod.POST)
     @ResponseBody()
     public BaseResponse<CIMServerResVO> login(@RequestBody LoginReqVO loginReqVO) throws Exception {
+
         BaseResponse<CIMServerResVO> res = new BaseResponse();
 
+        String server = serverCache.selectServer();
         //登录校验
         StatusEnum status = accountService.login(loginReqVO);
         if (status == StatusEnum.SUCCESS) {
-            String server = serverCache.selectServer();
+
             String[] serverInfo = server.split(":");
-            CIMServerResVO vo = new CIMServerResVO(serverInfo[0], Integer.parseInt(serverInfo[1]),Integer.parseInt(serverInfo[2]));
+            CIMServerResVO vo = new CIMServerResVO(serverInfo[0], Integer.parseInt(serverInfo[1]), Integer.parseInt(serverInfo[2]));
 
             //保存路由信息
             accountService.saveRouteInfo(loginReqVO,server);
@@ -155,6 +157,7 @@ public class RouteController {
             res.setDataBody(vo);
 
         }
+
         res.setCode(status.getCode());
         res.setMessage(status.getMessage());
 

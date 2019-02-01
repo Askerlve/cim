@@ -40,6 +40,8 @@ public interface RouteRequest {
      */
     CIMServerResVO.ServerInfo getCIMServer(LoginReqVO loginReqVO) throws Exception;
 
+
+
     /**
      * 获取所有在线用户
      * @return

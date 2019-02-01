@@ -144,8 +144,6 @@ public class RouteRequestImpl implements RouteRequest {
             body.close();
         }
 
-
-
         return cimServerResVO.getDataBody();
     }
 
@@ -165,13 +163,11 @@ public class RouteRequestImpl implements RouteRequest {
             throw new IOException("Unexpected code " + response);
         }
 
-
         ResponseBody body = response.body();
         OnlineUsersResVO onlineUsersResVO ;
         try {
             String json = body.string() ;
             onlineUsersResVO = JSON.parseObject(json, OnlineUsersResVO.class);
-
         }finally {
             body.close();
         }
