@@ -78,7 +78,7 @@ public class BeanConfig {
                 .setNameFormat("msg-callback-%d")
                 .setDaemon(true)
                 .build();
-        ThreadPoolExecutor productExecutor = new ThreadPoolExecutor(poolSize, poolSize, 1, TimeUnit.MILLISECONDS, queue,product);
+        ThreadPoolExecutor productExecutor = new ThreadPoolExecutor(poolSize, poolSize, 1, TimeUnit.MILLISECONDS, queue, product);
         return  productExecutor ;
     }
 
